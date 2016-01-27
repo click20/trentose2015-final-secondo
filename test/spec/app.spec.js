@@ -8,8 +8,7 @@ describe("Flirtr", function() {
 
     FlirtView.score( FlirtrModel.analyse( "love", patterns ) );
    
-      expect( FlirtrModel.getScore() ).toBe(1);
-      
+      expect( FlirtrModel.getScore() ).toBe(1);  
       
   });
  

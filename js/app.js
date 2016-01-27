@@ -57,14 +57,17 @@ var FlirtView = {
 
 var FlirtController = {
     
+    init: function(){
+        $("button").click( function(){
+        FlirtView.score( FlirtrModel.analyse( FlirtrModel.check(), patterns ) );
+        
+        } );
+    }
+    
 }; 
 
 $(document).ready(function(){
     
-    $("button").click( function(){
-        FlirtView.score( FlirtrModel.analyse( FlirtrModel.check(), patterns ) );
-        
-    } )
-    
+    FlirtController.init();
     
 });

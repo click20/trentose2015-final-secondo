@@ -3,8 +3,16 @@
 
 describe("Flirtr", function() {
 
-  it("should...", function() {  
+  it("Should give the correct score", function() {  
     
-  });    
+
+    FlirtView.score( FlirtrModel.analyse( "love", patterns ) );
+   
+      expect( FlirtrModel.getScore() ).toBe(1);
+      
+      
+  });
  
 });
+
+

@@ -40,7 +40,7 @@ var FlirtrModel = {
     */
    getScore : function () {
        
-       var ScoreTot = FlirtrModel.analyse(phrase, patterns);
+       return score;
        
    }
          

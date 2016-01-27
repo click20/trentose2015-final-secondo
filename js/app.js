@@ -1,7 +1,35 @@
+var score = 0;
+
 var FlirtrModel = {  
   
    /* It sets the phrase to analyse */
-   analyse : function (phrase){
+   check: function(){
+        var ph_taken = $("input").val()
+        return ph_taken;
+   },
+    
+   analyse : function (phrase,data_pattern){
+       
+       for( var i=0; i<data_pattern.length; i++ ){
+           
+           if( phrase.indexOf( data_pattern[i].word ) != -1 ){
+               
+               if( phrase.indexOf( data_pattern[i].neutraliser ) != -1 ){
+                   console.log("neutr");
+                   score = 0;
+               }else{
+                   console.log("score= ",data_pattern[i].score);
+                   score+= data_pattern[i].score;
+               }
+      
+           }else{
+               continue;
+           }
+               
+           
+       }
+       return score;
+       
    },
   
    /* Returns the flirting score (number) of the phrase.
@@ -11,6 +39,35 @@ var FlirtrModel = {
     * the right of the matching word)
     */
    getScore : function () {
+       
+       return score;
+       
    }
          
 };
+
+
+var FlirtView = {
+    
+    score: function(scoreTot){
+        $(".score").text(scoreTot);
+    }
+    
+};
+
+var FlirtController = {
+    
+    init: function(){
+        $("button").click( function(){
+        FlirtView.score( FlirtrModel.analyse( FlirtrModel.check(), patterns ) );
+        
+        } );
+    }
+    
+}; 
+
+$(document).ready(function(){
+    
+    FlirtController.init();
+    
+});
